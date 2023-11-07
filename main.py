@@ -14,7 +14,9 @@ def dijkstra(graph: np.array):
     d_i = graph[cur_node].copy()
 
     # Keep track of nodes resulting in the shortest path
-    node_paths = dict(zip(list(range(len(graph))), [[cur_node]]*len(graph)))
+    node_paths = {}
+    for node in range(len(graph)):
+        node_paths[node] = [0]
 
     while len(visited_nodes) < len(graph):
         distances = d_i.copy()
@@ -28,6 +30,11 @@ def dijkstra(graph: np.array):
         # Distance from prev to c to all other nodes
         d_i_sum = dc + graph[cur_node]
         # Take minimum distance from cur_node to all other nodes
+        for d in range(len(d_i_sum)):
+            if d_i_sum[d] < d_i[d]:
+                if cur_node not in node_paths[d]: node_paths[d].append(cur_node)
+            elif d_i_sum[d] > d_i[d]:
+                if d not in node_paths[d]: node_paths[d].append(d)
         d_i = np.minimum(d_i, d_i_sum)
 
         visited_nodes.append(cur_node)

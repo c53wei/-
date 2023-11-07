@@ -15,10 +15,10 @@ def igor_graph():
     node_6 = [float('inf'), float('inf'), 8, 2, float('inf'), 0]
 
     graph = np.array([node_1, node_2, node_3,
-                     node_4, node_5, node_6])
+                      node_4, node_5, node_6])
 
     return graph
 
+
 def test_dijkstra(igor_graph):
     dijkstra(igor_graph)
-
