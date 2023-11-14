@@ -33,9 +33,9 @@ def our_dijkstra(graph: np.array, end_node: int):
         # Identify current node from set of unvisited nodes that has minimum distance from previous
         cur_node = np.where(distances == min(distances))[0][0]
         # Distance from previous node to current node
-        dc = distances[cur_node]
+        d_c = distances[cur_node]
         # Distance from prev to c to all other nodes
-        d_i_sum = dc + graph[cur_node]
+        d_i_sum = d_c + graph[cur_node]
         # Take minimum distance from cur_node to all other nodes
         prev_d_i = d_i.copy()
         d_i = np.minimum(d_i, d_i_sum)
