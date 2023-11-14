@@ -28,7 +28,7 @@ def test_our_dijkstra(igor_graph):
     print(f'Shortest Path: {shortest_path}\n')
     print(f'Distance: {distance}')
 
-def test_astar(benchmark):
+def test_astar(igor_graph):
 
 
     # TEST CASE 1

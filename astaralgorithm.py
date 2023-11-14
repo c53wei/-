@@ -12,12 +12,12 @@ class Graph:
     # heuristic function with Euclidean distance between the node and the target node
     def h1(self, n):
         H = {
-            0: math.sqrt(29),
-            1: 5,
-            2: 4,
-            3: math.sqrt(8),
+            0: 4,
+            1: 3,
+            2: 2,
+            3: 1,
             4: 0,
-            5: 3
+            5: 1
         }
 
         return H[n]
