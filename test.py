@@ -20,7 +20,9 @@ def igor_graph():
     return graph
 
 
-def test_our_dijkstra(igor_graph):
+def test_our_dijkstra(benchmark, igor_graph):
+
+    benchmark(our_dijkstra, graph=igor_graph, end_node=0)
 
     shortest_path, distance = our_dijkstra(igor_graph, 0)
     print(f'Shortest Path: {shortest_path}\n')
