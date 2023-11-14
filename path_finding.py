@@ -43,7 +43,7 @@ def our_dijkstra(graph: np.array, end_node: int):
         visited_nodes.append(cur_node)
         unvisited_nodes.remove(cur_node)
 
-        return node_paths[end_node], d_i[end_node]
+    return node_paths[end_node], d_i[end_node]
 
 
 

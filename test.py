@@ -24,13 +24,12 @@ def test_our_dijkstra(igor_graph):
 
     # benchmark(our_dijkstra, graph=igor_graph, end_node=0)
 
-    shortest_path, distance = our_dijkstra(igor_graph, 2)
+    shortest_path, distance = our_dijkstra(igor_graph, 4)
     print(f'Shortest Path: {shortest_path}\n')
     print(f'Distance: {distance}')
 
-def test_astar():
+def test_astar(benchmark):
 
-    # benchmark(our_dijkstra, graph=igor_graph, end_node=0)
 
     # TEST CASE 1
     adjacency_list = {
@@ -56,5 +55,8 @@ def test_astar():
 
     graph1 = Graph(adjacency_list)
     shortest_path, distance = graph1.a_star_algorithm(0, 4)
+
+    # benchmark(graph1.a_star_algorithm, start_node=0, stop_node=4)
+
     print(f'Shortest Path: {shortest_path}\n')
     print(f'Distance: {distance}')
