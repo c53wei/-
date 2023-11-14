@@ -3,7 +3,7 @@ import pytest
 import numpy as np
 
 from path_finding import our_dijkstra
-
+from astaralgorithm import Graph
 
 @pytest.fixture
 def igor_graph():
@@ -25,5 +25,36 @@ def test_our_dijkstra(igor_graph):
     # benchmark(our_dijkstra, graph=igor_graph, end_node=0)
 
     shortest_path, distance = our_dijkstra(igor_graph, 2)
+    print(f'Shortest Path: {shortest_path}\n')
+    print(f'Distance: {distance}')
+
+def test_astar():
+
+    # benchmark(our_dijkstra, graph=igor_graph, end_node=0)
+
+    # TEST CASE 1
+    adjacency_list = {
+        0: [(1, 3), (5, 5)],
+        1: [(5, 10), (2, 7)],
+        2: [(3, 4), (4, 1)], 
+        3: [(4, 6)],
+        4: [(5, 7)],
+        5: [(3, 2), (2, 8)]
+    }
+
+
+    '''
+    # TEST CASE 2
+    adjacency_list = {
+        0: [(1, 5), (2, 15)],
+        1: [(2, 6), (3, 4)],
+        2: [(4, 2)],
+        3: [(4, 3)]
+    }
+    '''
+
+
+    graph1 = Graph(adjacency_list)
+    shortest_path, distance = graph1.a_star_algorithm(0, 4)
     print(f'Shortest Path: {shortest_path}\n')
     print(f'Distance: {distance}')
