@@ -42,6 +42,7 @@ class Graph:
         # and who's neighbors have been inspected
         open_list = set([start_node])
         closed_list = set([])
+        distance = 0
 
         # g contains current distances from start_node to all other nodes
         # the default value (if it's not found in the map) is +infinity
@@ -69,6 +70,7 @@ class Graph:
             # then we begin reconstructin the path from it to the start_node
             if n == stop_node:
                 reconst_path = []
+                max = g[n]
 
                 while parents[n] != n:
                     reconst_path.append(n)
@@ -78,8 +80,9 @@ class Graph:
 
                 reconst_path.reverse()
 
-                print('Path found: {}'.format(reconst_path))
-                return reconst_path
+                #print('Path found: {}'.format(reconst_path))
+
+                return reconst_path, max
 
             # for all neighbors of the current node do
             for (m, weight) in self.get_neighbors(n):
@@ -107,8 +110,7 @@ class Graph:
             open_list.remove(n)
             closed_list.add(n)
 
-        print('Path does not exist!')
-        return None
+        return reconst_path
 
 
 # TEST CASE 1
@@ -134,4 +136,6 @@ adjacency_list = {
 
 
 graph1 = Graph(adjacency_list)
-graph1.a_star_algorithm(0, 4)
+shortest_path, distance = graph1.a_star_algorithm(0, 4)
+print(f'Shortest Path: {shortest_path}\n')
+print(f'Distance: {distance}')
