@@ -2,12 +2,6 @@ from collections import deque
 import math
 
 class Graph:
-    # example of adjacency list (or rather map)
-    # adjacency_list = {
-    # 'A': [('B', 1), ('C', 3), ('D', 7)],
-    # 'B': [('D', 5)],
-    # 'C': [('D', 12)]
-    # }
 
     def __init__(self, adjacency_list):
         self.adjacency_list = adjacency_list
@@ -131,10 +125,10 @@ adjacency_list = {
 '''
 # TEST CASE 2
 adjacency_list = {
-    'A': [('B', 5), ('C', 15)],
-    'B': [('C', 6), ('D', 4)],
-    'C': [('E', 2)],
-    'D': [('E', 3)]
+    0: [(1, 5), (2, 15)],
+    1: [(2, 6), (3, 4)],
+    2: [(4, 2)],
+    3: [(4, 3)]
 }
 '''
 
