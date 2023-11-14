@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def dijkstra(graph: np.array):
+def our_dijkstra(graph: np.array, end_node: int):
     # Some variables to keep track of:
 
     visited_nodes = []
@@ -43,8 +43,7 @@ def dijkstra(graph: np.array):
         visited_nodes.append(cur_node)
         unvisited_nodes.remove(cur_node)
 
-    print(d_i)
-    print(node_paths)
+        return node_paths[end_node], d_i[end_node]
 
 
 

@@ -2,7 +2,7 @@ import pytest
 
 import numpy as np
 
-from main import dijkstra
+from path_finding import our_dijkstra
 
 
 @pytest.fixture
@@ -20,5 +20,8 @@ def igor_graph():
     return graph
 
 
-def test_dijkstra(igor_graph):
-    dijkstra(igor_graph)
+def test_our_dijkstra(igor_graph):
+
+    shortest_path, distance = our_dijkstra(igor_graph, 0)
+    print(f'Shortest Path: {shortest_path}\n')
+    print(f'Distance: {distance}')
