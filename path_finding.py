@@ -1,13 +1,13 @@
 import numpy as np
 
 
-def our_dijkstra(graph: np.array, end_node: int):
+def our_dijkstra(graph: np.array, end_node: int, start_node: int = 0):
     # Some variables to keep track of:
 
     visited_nodes = []
     unvisited_nodes = list(range(len(graph)))
 
-    cur_node = 0
+    cur_node = start_node
     unvisited_nodes.remove(cur_node)
     visited_nodes.append(cur_node)
     # Make shallow copy of distances from current node
@@ -17,14 +17,14 @@ def our_dijkstra(graph: np.array, end_node: int):
     # Keep track of nodes resulting in the shortest path
     node_paths = {}
     for node in range(len(graph)):
-        node_paths[node] = [0]
+        node_paths[node] = [start_node]
 
     while len(visited_nodes) < len(graph):
         # Update new shortest paths
         for i, dist in enumerate(d_i):
             if dist < prev_d_i[i]:
-                node_paths[i] = node_paths[cur_node] + [i]
-                node_paths[i] = list(set(node_paths[i]))
+                if i not in node_paths[i]:
+                    node_paths[i] = node_paths[cur_node] + [i]
 
         distances = d_i.copy()
         # Replace distance to visited nodes with infinity temporarily so that they can't be visited again
