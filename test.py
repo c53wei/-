@@ -75,4 +75,4 @@ def test_astar(benchmark):
     #print(f'Shortest Path: {shortest_path}\n')
     #print(f'Distance: {distance}')
 
-    benchmark(Graph.a_star_algorithm, graph1, start_vertex=0, stop_node=6)
+    benchmark(graph1.a_star_algorithm, start_node=0, stop_node=6)

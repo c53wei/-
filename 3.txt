@@ -5,59 +5,16 @@ rootdir: /Users/clarewei/Documents/BME/4A/BME411–Numerical Optimization /A Sta
 plugins: benchmark-4.0.0
 collected 1 item
 
-test.py F                                                                [100%]
+test.py .                                                                [100%]
 
-=================================== FAILURES ===================================
-__________________________________ test_astar __________________________________
 
-benchmark = <pytest_benchmark.fixture.BenchmarkFixture object at 0x1028f7cd0>
+----------------------------------------------- benchmark: 1 tests ----------------------------------------------
+Name (time in us)        Min      Max    Mean  StdDev  Median     IQR  Outliers  OPS (Kops/s)  Rounds  Iterations
+-----------------------------------------------------------------------------------------------------------------
+test_astar            7.9580  71.5840  8.2720  1.0555  8.1670  0.1250  308;2103      120.8901   36924           1
+-----------------------------------------------------------------------------------------------------------------
 
-    def test_astar(benchmark):
-    
-        adjacency_list = {
-            0: [(1, 4), (2, 2), (5, 4)],
-            1: [(0, 4)],
-            2: [(4, 1), (6, 5)],
-            3: [(4, 3), (5, 2)],
-            4: [(3, 3), (2, 1)],
-            5: [(3, 2), (0, 4)],
-            6: [(2, 5)]
-        }
-    
-        graph1 = Graph(adjacency_list)
-    
-        #shortest_path, distance = graph1.a_star_algorithm(0, 4)
-        #print(f'Shortest Path: {shortest_path}\n')
-        #print(f'Distance: {distance}')
-    
->       benchmark(Graph.a_star_algorithm, graph1, start_vertex=0, stop_node=3)
-
-test.py:78: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-venv/lib/python3.9/site-packages/pytest_benchmark/fixture.py:125: in __call__
-    return self._raw(function_to_benchmark, *args, **kwargs)
-venv/lib/python3.9/site-packages/pytest_benchmark/fixture.py:147: in _raw
-    duration, iterations, loops_range = self._calibrate_timer(runner)
-venv/lib/python3.9/site-packages/pytest_benchmark/fixture.py:275: in _calibrate_timer
-    duration = runner(loops_range)
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-
-loops_range = range(0, 1), timer = <built-in function perf_counter>
-
-    def runner(loops_range, timer=self._timer):
-        gc_enabled = gc.isenabled()
-        if self._disable_gc:
-            gc.disable()
-        tracer = sys.gettrace()
-        sys.settrace(None)
-        try:
-            if loops_range:
-                start = timer()
-                for _ in loops_range:
->                   function_to_benchmark(*args, **kwargs)
-E                   TypeError: a_star_algorithm() got an unexpected keyword argument 'start_vertex'
-
-venv/lib/python3.9/site-packages/pytest_benchmark/fixture.py:90: TypeError
-=========================== short test summary info ============================
-FAILED test.py::test_astar - TypeError: a_star_algorithm() got an unexpected ...
-============================== 1 failed in 1.09s ===============================
+Legend:
+  Outliers: 1 Standard Deviation from Mean; 1.5 IQR (InterQuartile Range) from 1st Quartile and 3rd Quartile.
+  OPS: Operations Per Second, computed as 1 / Mean
+============================== 1 passed in 1.44s ===============================
