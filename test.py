@@ -49,11 +49,13 @@ def test_our_dijkstra(igor_graph, benchmark):
 
 def test_our_dijkstra_bidirectional(bidirectional_graph, benchmark):
 
-    for i in range(len(bidirectional_graph)):
-        for j in range(len(bidirectional_graph)):
-            shortest_path, distance = our_dijkstra(bidirectional_graph, end_node=j, start_node=i)
-            print(f'Distance: {distance}')
-            print(f'Shortest Path from {i} to {j}: {shortest_path}\n')
+    # for i in range(len(bidirectional_graph)):
+    #     for j in range(len(bidirectional_graph)):
+    #         shortest_path, distance = our_dijkstra(bidirectional_graph, end_node=j, start_node=i)
+    #         print(f'Distance: {distance}')
+    #         print(f'Shortest Path from {i} to {j}: {shortest_path}\n')
+
+    benchmark(our_dijkstra, bidirectional_graph, end_node=6, start_node=0)
 
 
 def test_astarv2(benchmark):
@@ -83,4 +85,4 @@ def test_astarv2(benchmark):
     #shortest_path = convertresult(result)
     #print(f'Shortest Path: {shortest_path}\n')
 
-    benchmark(a_star(g, vertices[0], 6))
+    benchmark(a_star, g, vertices[0], 6)
