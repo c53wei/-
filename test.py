@@ -38,17 +38,22 @@ def bidirectional_graph():
 
 
 def test_our_dijkstra(igor_graph, benchmark):
+
     benchmark(our_dijkstra, graph=igor_graph, end_node=0)
 
-    shortest_path, distance = our_dijkstra(igor_graph, 4)
-    print(f'Shortest Path: {shortest_path}\n')
-    print(f'Distance: {distance}')
+    # shortest_path, distance = our_dijkstra(igor_graph, 4)
+    # print(f'Shortest Path: {shortest_path}\n')
+    # print(f'Distance: {distance}')
 
 
 def test_our_dijkstra_bidirectional(bidirectional_graph, benchmark):
-    shortest_path, distance = our_dijkstra(bidirectional_graph, end_node=6, start_node=5)
-    print(f'Shortest Path: {shortest_path}\n')
-    print(f'Distance: {distance}')
+
+    for i in range(len(bidirectional_graph)):
+        for j in range(len(bidirectional_graph)):
+            shortest_path, distance = our_dijkstra(bidirectional_graph, end_node=j, start_node=i)
+            print(f'Distance: {distance}')
+            print(f'Shortest Path from {i} to {j}: {shortest_path}\n')
+
 
 
 def test_astar(benchmark):
