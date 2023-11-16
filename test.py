@@ -4,7 +4,6 @@ import numpy as np
 
 from path_finding import our_dijkstra
 from astaralgorithm import Graph
-from astarv2 import a_star, Graph, convertresult
 
 
 @pytest.fixture
@@ -58,31 +57,22 @@ def test_our_dijkstra_bidirectional(bidirectional_graph, benchmark):
     benchmark(our_dijkstra, bidirectional_graph, end_node=6, start_node=0)
 
 
-def test_astarv2(benchmark):
-    g = Graph()
-    # Loads the graph with the first seven vertices.
-    g.add_vertex(0, 4)
-    g.add_vertex(1, 4)
-    g.add_vertex(2, 2)
-    g.add_vertex(3, 7)
-    g.add_vertex(4, 5)
-    g.add_vertex(5, 10)
-    g.add_vertex(6, 0)
-    # Constructs the 'vertices' dictionary for a more
-    # convenient access during the graph construction.
-    vertices = {k.entity: k for k in g.vertices()}
-    # Constructs an arbitrary graph from
-    # the existing vertices and edges.
-    g.add_edge(vertices[0], vertices[1], 4)
-    g.add_edge(vertices[0], vertices[2], 2)
-    g.add_edge(vertices[2], vertices[4], 1)
-    g.add_edge(vertices[4], vertices[3], 3)
-    g.add_edge(vertices[3], vertices[5], 2)
-    g.add_edge(vertices[0], vertices[5], 4)
-    g.add_edge(vertices[2], vertices[6], 5)
+def test_astar(benchmark):
 
-    #result = a_star(g, vertices[0], 0)
-    #shortest_path = convertresult(result)
+    adjacency_list = {
+        0: [(1, 4), (2, 2), (5, 4)],
+        1: [(0, 4)],
+        2: [(4, 1), (6, 5)], 
+        3: [(4, 3), (5, 2)],
+        4: [(3, 3), (2, 1)],
+        5: [(3, 2), (0, 4)],
+        6: [(2, 5)]
+    }
+
+    graph1 = Graph(adjacency_list)
+    
+    #shortest_path, distance = graph1.a_star_algorithm(0, 4)
     #print(f'Shortest Path: {shortest_path}\n')
+    #print(f'Distance: {distance}')
 
-    benchmark(a_star, g, vertices[0], 6)
+    benchmark(graph1.a_star_algorithm(0, 0))
