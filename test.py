@@ -3,7 +3,7 @@ import pytest
 import numpy as np
 
 from path_finding import our_dijkstra
-from astaralgorithm import Graph
+from a_star_algorithm import Graph
 
 
 @pytest.fixture
@@ -75,4 +75,4 @@ def test_astar(benchmark):
     #print(f'Shortest Path: {shortest_path}\n')
     #print(f'Distance: {distance}')
 
-    benchmark(graph1.a_star_algorithm, start_node=0, stop_node=6)
+    benchmark(graph1.a_star_algorithm, start_node=0, stop_node=0)
